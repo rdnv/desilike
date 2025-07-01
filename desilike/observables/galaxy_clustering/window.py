@@ -370,7 +370,7 @@ class WindowedPowerSpectrumMultipoles(BaseCalculator):
                     self.ellsin.append(proj.ell)
             projsin = [proj for proj in wmatrix.projsin if proj.ell in self.ellsin]
             self.ellsin = tuple(proj.ell for proj in projsin)
-            wmatrix.select_proj(projsout=[(ell, None) for ell in self.ells], projsin=projsin)
+            wmatrix.select_proj(projsout=[(ell, 0) for ell in self.ells], projsin=projsin)
             if kinrebin is not None:
                 wmatrix.slice_x(slicein=slice(0, len(wmatrix.xin[0]) // kinrebin * kinrebin, kinrebin))
             # print(wmatrix.xout[0], max(kk.max() for kk in self.k) * 1.2)
